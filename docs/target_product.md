@@ -1,16 +1,16 @@
 # target_product Documentation
 
 ## Brief Description
-`target_product` is an object that facilitates extracting product data from Target product pages using a given Target product ID (TCIN).
+The `target_product` object is used to extract detailed product information from a Target product page using a given TCIN (Target's Product ID).
 
 ## Usage
-To use `target_product`, you need to make a POST request to the Target product endpoint with the required parameters.
+To use `target_product`, you need to make a POST request to the Target product API endpoint with the required parameters.
 
 ## Parameters
 - `tcin` (string, required): The Target product ID (TCIN) of the item you want to retrieve information for. Must be an 8-digit number.
 
 ## Return Value
-The `target_product` object returns a JSON response containing detailed product information from the Target product page.
+Returns a JSON object containing detailed product information including name, brand, price, description, images, specifications, and customer reviews.
 
 ## Examples
 
@@ -27,11 +27,12 @@ fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/product', {
   })
 })
 .then(response => response.json())
-.then(data => console.log(data));
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
 ```
 
 ## Notes or Considerations
-- Ensure you have the necessary authentication token to make requests to the API.
-- The API has a render option enabled, which may affect response times.
-- The response includes various details about the product, such as name, brand, price, description, images, specifications, and customer ratings.
-- Be aware of any rate limiting or usage restrictions when making requests to the API.
+- You need a valid API token to access the Target product API.
+- The API has a render functionality that waits for certain elements to load before scraping the data, which may affect response times.
+- The response includes various details about the product, including pricing, images, specifications, and customer reviews.
+- Be aware of Target's terms of service and usage limits when using this API.
