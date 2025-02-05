@@ -1,25 +1,25 @@
 # targetSearch Documentation
 
 ## Brief Description
-targetSearch is an object that facilitates searching for products on Target's website and extracting relevant data from the search results.
+targetSearch is an object that facilitates searching for products on Target's website and extracting relevant product information.
 
 ## Usage
 To use targetSearch, you need to make a POST request to the Target search API endpoint with the required parameters.
 
 ## Parameters
-- `query` (string, required): The search term to look for on Target's website.
-- `offset` (number, optional): The number of results to skip before starting to return data.
-- `category` (string, optional): Limits the search to a specific product category.
-- `fulfillment` (string, optional): Filters results by fulfillment method (e.g., "Pickup", "Shipping").
-- `sort_by` (string, optional): Determines the order of search results (e.g., "Relevance", "Price: Low to High").
+- `query` (string, required): The search term to look for products on Target.
+- `offset` (number, optional): The number of results to skip before starting to return products.
+- `category` (string, optional): A category ID to filter results.
+- `fulfillment` (string, optional): Filter by fulfillment method (e.g. "Pickup", "Shipping").
+- `sort_by` (string, optional): Sort results by different criteria (e.g. "Relevance", "Price: Low to High").
 
 ## Return Value
-The targetSearch object doesn't directly return a value, but the API response contains search results including product details such as name, brand, price, rating, and image URL.
+The API returns a JSON object containing search results, including product details such as name, brand, price, image URL, and more.
 
 ## Examples
 
-1. Basic search:
 ```javascript
+// Example 1: Basic search
 const response = await fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/search', {
   method: 'POST',
   headers: {
@@ -30,11 +30,11 @@ const response = await fetch('https://api.webit.live/api/v1/realtime/ecommerce/t
     query: 'iron flask'
   })
 });
-const data = await response.json();
-```
 
-2. Search with additional parameters:
-```javascript
+const data = await response.json();
+console.log(data.parsing.search_results);
+
+// Example 2: Search with additional parameters
 const response = await fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/search', {
   method: 'POST',
   headers: {
@@ -43,16 +43,18 @@ const response = await fetch('https://api.webit.live/api/v1/realtime/ecommerce/t
   },
   body: JSON.stringify({
     query: 'headphones',
-    fulfillment: 'Shipping',
-    sort_by: 'Price: Low to High'
+    sort_by: 'Price: Low to High',
+    fulfillment: 'Shipping'
   })
 });
+
 const data = await response.json();
+console.log(data.parsing.search_results);
 ```
 
 ## Notes or Considerations
-- Ensure you have the necessary API token for authentication.
-- The API has a render option that simulates browser behavior, which may impact response times.
-- Be aware of any rate limiting or usage restrictions imposed by the API provider.
-- The search results may include sponsored products, which are marked in the response.
-- Some optional parameters like `category` require specific formatting (e.g., a 5-character alphanumeric string for category).
+- Ensure you have a valid API token for authentication.
+- The API has rate limiting, so be mindful of the number of requests you make.
+- Search results may vary based on inventory and regional availability.
+- Some optional parameters like `category` require specific format (e.g., 5-digit alphanumeric code for category).
+- The API simulates user behavior by scrolling through search results, which may affect response time.
