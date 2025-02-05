@@ -1,38 +1,78 @@
 # target_product Documentation
 
 ## Brief Description
-`target_product` is an object that facilitates extracting product data from Target's website for a given product ID (TCIN).
+The target_product API endpoint extracts detailed product information from a Target product page for a given Target product ID (TCIN).
 
 ## Usage
-To use `target_product`, you need to make a POST request to the Target product API endpoint with the required parameters.
+This endpoint is accessed via a POST request to the Nimble eCommerce API. You need to provide the Target product ID (TCIN) as a parameter.
 
 ## Parameters
-- `tcin` (string, required): Target's product ID (TCIN). Must be an 8-digit number.
+
+| Parameter | Type   | Required | Description                    |
+|-----------|--------|----------|--------------------------------|
+| tcin      | string | Yes      | Target's product ID (8 digits) |
+
+JSON representation:
+```json
+{
+  "tcin": "87973629"
+}
+```
+
+## Prerequisites
+
+| Prerequisite | Description |
+|--------------|-------------|
+| API Key      | Required for authentication |
+| Content-Type | Set to application/json     |
 
 ## Return Value
-Returns a JSON object containing detailed product information from Target's website.
+The API returns a JSON object containing detailed product information, including name, brand, price, description, images, specifications, and customer reviews.
 
 ## Examples
 
+### Python
+```python
+import requests
+
+url = "https://api.webit.live/api/v1/realtime/ecommerce/target/product"
+headers = {
+    "Authorization": "Basic <YOUR_API_KEY>",
+    "Content-Type": "application/json"
+}
+data = {
+    "tcin": "87973629"
+}
+
+response = requests.post(url, headers=headers, json=data)
+product_data = response.json()
+print(product_data)
+```
+
+### JavaScript
 ```javascript
-// Example POST request
-fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/product', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Basic <TOKEN>',
+const axios = require('axios');
+
+const url = 'https://api.webit.live/api/v1/realtime/ecommerce/target/product';
+const headers = {
+    'Authorization': 'Basic <YOUR_API_KEY>',
     'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
+};
+const data = {
     tcin: '87973629'
-  })
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
+};
+
+axios.post(url, data, { headers })
+    .then(response => {
+        console.log(response.data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 ```
 
 ## Notes or Considerations
-- Ensure you have the necessary API access and authorization token before making requests.
-- The API uses a rendering process to capture dynamic content, which may affect response times.
-- Be mindful of Target's terms of service and any rate limiting when using this API.
-- The returned data structure may change based on the specific product and availability of information on Target's website.
+- Ensure you have a valid API key for authentication.
+- The TCIN must be an 8-digit string.
+- The API uses web scraping techniques, so be mindful of Target's website structure changes that might affect the response.
+- Respect Target's terms of service and rate limits when using this API.
