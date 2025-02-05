@@ -4,19 +4,19 @@
 The `amazon_product` object is designed to extract data from an Amazon product page for a given ASIN (Amazon's Product ID).
 
 ## Usage
-To use the `amazon_product` object, you need to make a POST request to the specified endpoint with the required parameters.
+This object is used to construct API requests for retrieving Amazon product data. It defines the structure and parameters needed to make a successful API call.
 
 ## Parameters
-- `asin` (string, required): The Amazon Standard Identification Number (ASIN) of the product. Must be a 10-character string containing only uppercase letters and numbers.
+- `asin` (string, required): The Amazon Standard Identification Number (ASIN) of the product. Must be a 10-character alphanumeric string.
 
 ## Return Value
-The `amazon_product` object returns a JSON response containing detailed information about the requested Amazon product.
+The object doesn't return a value directly, but it defines the structure of the API response, which includes detailed product information.
 
 ## Examples
 
 ```javascript
-// Example POST request
-fetch('https://api.webit.live/api/v1/realtime/ecommerce/amazon/product', {
+// Example API request
+const response = await fetch('https://api.webit.live/api/v1/realtime/ecommerce/amazon/product', {
   method: 'POST',
   headers: {
     'Authorization': 'Basic <TOKEN>',
@@ -25,15 +25,14 @@ fetch('https://api.webit.live/api/v1/realtime/ecommerce/amazon/product', {
   body: JSON.stringify({
     asin: 'B0C4ZZBD71'
   })
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
+});
+
+const data = await response.json();
+console.log(data);
 ```
 
 ## Notes or Considerations
-- Ensure you have the necessary authentication token to make requests to the API.
-- The ASIN must be exactly 10 characters long and contain only uppercase letters and numbers.
-- The response includes detailed product information such as price, availability, product name, features, and variations.
-- The API supports multiple domains (e.g., 'com', 'co.uk'), with 'US' set as the default country.
-- Be mindful of Amazon's terms of service when using this API to scrape product data.
+- The API requires authentication. Ensure you have the proper authorization token.
+- The response includes extensive product details such as price, ratings, features, and variations.
+- The object supports multiple domains (e.g., 'com', 'co.uk'), defaulting to the US store.
+- Ensure the ASIN provided is valid to get accurate results.
