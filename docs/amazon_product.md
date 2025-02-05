@@ -1,16 +1,16 @@
 # amazon_product Documentation
 
 ## Brief Description
-`amazon_product` is an object that facilitates extracting data from an Amazon product page for a given ASIN (Amazon's Product ID).
+amazon_product is an object that facilitates extracting data from Amazon product pages for a given ASIN (Amazon's Product ID).
 
 ## Usage
-To use `amazon_product`, you need to make a POST request to the specified endpoint with the required parameters.
+To use amazon_product, you need to make a POST request to the specified endpoint with the required parameters.
 
 ## Parameters
 - `asin` (string, required): The Amazon Standard Identification Number (ASIN) of the product. Must be a 10-character alphanumeric string.
 
 ## Return Value
-The `amazon_product` object returns a JSON response containing detailed information about the requested Amazon product.
+The object returns a JSON response containing detailed information about the specified Amazon product.
 
 ## Examples
 
@@ -32,8 +32,8 @@ fetch('https://api.webit.live/api/v1/realtime/ecommerce/amazon/product', {
 ```
 
 ## Notes or Considerations
-- Ensure you have the necessary authorization token to access the API.
-- The ASIN must be valid and correspond to an existing Amazon product.
+- Ensure you have the necessary authorization token to make requests to the API.
+- The ASIN must be exactly 10 characters long and contain only uppercase letters and numbers.
 - The response includes various details about the product, such as price, availability, ratings, and product variations.
-- The API supports multiple domains (e.g., 'com', 'co.uk'), defaulting to the US domain.
-- Be mindful of Amazon's terms of service when using this API to scrape product data.
+- The API supports multiple domains (e.g., "com", "co.uk"), defaulting to the US domain.
+- Always handle potential errors in your requests, as network issues or invalid ASINs may occur.
