@@ -1,33 +1,37 @@
 # target_product Documentation
 
 ## Brief Description
-`target_product` is an object that defines a query builder for extracting data from Target product pages using a given Target product ID (TCIN).
+`target_product` is an object that facilitates extracting product data from Target's website for a given product ID (TCIN).
 
 ## Usage
-The `target_product` object is used to construct API requests for retrieving detailed product information from Target's website. It specifies the URL structure, required parameters, and parsing options for the API call.
+To use `target_product`, you need to make a POST request to the Target product endpoint with the required parameters.
 
 ## Parameters
-- `tcin` (string, required): The Target product ID, must be an 8-digit number.
+- `tcin` (string, required): Target's unique product identifier (TCIN). Must be an 8-digit number.
 
 ## Return Value
-The query builder doesn't return a value directly, but when used with an API, it will return a JSON object containing detailed product information.
+Returns a JSON object containing detailed product information from Target's website.
 
 ## Examples
 
 ```javascript
-// Example API request using the target_product query builder
-const response = await api.query('target_product', {
-  tcin: '87973629'
-});
-
-// The response will contain detailed product information
-console.log(response.parsing.product.name);
-console.log(response.parsing.product.price);
+// Example POST request
+fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/product', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Basic <TOKEN>',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    tcin: '87973629'
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data));
 ```
 
 ## Notes or Considerations
-- This query builder is designed to work with a specific API (likely internal or proprietary).
-- The API requires authentication, as indicated by the `Authorization` header in the example request.
-- The query includes a render step, which may increase response time but ensures more accurate data extraction.
-- The product data is extracted using a custom parser (parsit-ai) with a specific parser ID.
-- Be aware of Target's terms of service and any rate limiting when using this API in production environments.
+- Ensure you have proper authorization to access the API endpoint.
+- The API uses a render flow to capture dynamic content, which may increase response time.
+- Product data is extracted using an AI-powered parser, so results may vary based on the target webpage's structure.
+- Be mindful of Target's website terms of service when using this API.
