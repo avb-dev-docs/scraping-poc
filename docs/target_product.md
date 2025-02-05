@@ -1,41 +1,47 @@
 # target_product Documentation
 
 ## Brief Description
-`target_product` is an object that defines the query structure and parameters for extracting product data from Target's website.
+`target_product` is an object that defines the query structure and parsing options for extracting product data from Target's website.
 
 ## Usage
-This object is typically used as part of a larger API or system for scraping product information from Target. It's not meant to be used directly by end users, but rather as a configuration for web scraping tools or services.
+This object is typically used as part of a larger system for web scraping or API integration with Target's product pages. It is not directly callable, but rather provides configuration for making requests to Target's product pages.
 
 ## Parameters
-The `target_product` object expects one required parameter:
+The `target_product` object expects one parameter in its query:
 
-- `tcin` (string, required): The Target Commercial Item Number (TCIN) of the product. This should be an 8-digit number.
+- `tcin` (string, required): The Target Commercial Item Number (TCIN) of the product. This should be an 8-digit string.
 
 ## Return Value
-While `target_product` itself doesn't return a value, it defines the structure for an API response containing detailed product information from Target.
+While `target_product` itself doesn't return a value, the system using this configuration will typically return a JSON object containing detailed product information from the Target website.
 
 ## Examples
 
-1. Basic usage within an API call:
+1. Basic usage within a hypothetical API call:
 
 ```javascript
-const productData = await fetchTargetProduct({
-  tcin: "87973629"
+const api = new WebScrapingAPI(config);
+const result = await api.scrape({
+  ...target_product,
+  variables: {
+    tcin: "87973629"
+  }
 });
+console.log(result);
 ```
 
 2. Extracting specific product details:
 
 ```javascript
-const { name, brand, price, rating } = productData.parsing.product;
-console.log(`${name} by ${brand} - $${price} (${rating} stars)`);
+const productData = await fetchTargetProduct("79767634");
+console.log(`Product Name: ${productData.product.name}`);
+console.log(`Price: $${productData.product.price}`);
+console.log(`Rating: ${productData.product.rating}`);
 ```
 
 ## Notes or Considerations
 
-- This object is designed for use with specific web scraping or API tools and may not work as a standalone function.
-- The TCIN must be exactly 8 digits long.
-- The scraping process involves rendering the page and waiting for specific elements, which may take some time.
-- Be aware of Target's terms of service and legal considerations when scraping their website.
-- The returned data structure is complex and may require careful parsing to extract desired information.
-- This tool is designed to work with Target's US website only.
+- This object is designed to work with Target's website structure as of the last update. Changes to Target's website may require updates to the query configuration.
+- The `tcin` parameter must be a valid 8-digit Target product identifier.
+- The scraping process includes a render step with specific timing and selectors, which may need adjustment based on Target's page load behavior.
+- Be mindful of Target's terms of service and rate limiting when using this configuration for web scraping.
+- The returned data structure is complex and includes detailed product information, images, pricing, and customer reviews. Familiarize yourself with the response format to effectively parse the data you need.
