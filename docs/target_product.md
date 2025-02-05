@@ -1,39 +1,38 @@
 # target_product Documentation
 
 ## Brief Description
-The `target_product` object is used to extract detailed product information from a Target product page using a given Target product ID (TCIN).
+target_product is an object that facilitates extracting product data from Target's website for a given product ID (TCIN).
 
 ## Usage
-To use `target_product`, you need to make a POST request to the Target product endpoint with the required parameters.
+To use target_product, you need to make a POST request to the Target product endpoint with the required parameters.
 
 ## Parameters
-- `tcin` (string, required): The Target product ID (TCIN) of the product you want to retrieve information for. Must be an 8-digit number.
+- `tcin` (string, required): The Target product ID (TCIN). Must be an 8-digit number.
 
 ## Return Value
-The `target_product` object returns a JSON response containing detailed product information from the Target product page.
+Returns a JSON object containing detailed product information from the Target website.
 
 ## Examples
 
 ```javascript
-// Example POST request
-fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/product', {
+// Example request
+const response = await fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/product', {
   method: 'POST',
   headers: {
-    'Authorization': 'Basic <TOKEN>',
+    'Authorization': 'Basic <YOUR_TOKEN>',
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
     tcin: '87973629'
   })
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
+});
+
+const data = await response.json();
+console.log(data);
 ```
 
 ## Notes or Considerations
-- The API requires authentication. Make sure to replace `<TOKEN>` with your actual API token.
-- The product information is scraped in real-time, so response times may vary depending on the target website's performance.
-- The returned data includes various details such as product name, brand, price, description, images, specifications, and user ratings.
-- Be mindful of Target's terms of service and usage limits when using this API.
-- The API uses a render flow to ensure all dynamic content is loaded before scraping, which may increase response times but provides more comprehensive data.
+- The API requires authentication. Make sure to replace `<YOUR_TOKEN>` with your actual API token.
+- The response includes various details about the product, such as name, brand, price, description, images, specifications, and customer reviews.
+- The API uses web scraping techniques, so be aware of potential rate limiting or changes to Target's website structure that could affect the results.
+- Processing time may vary depending on the complexity of the product page and current server load.
