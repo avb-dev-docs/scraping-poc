@@ -2,29 +2,29 @@
 
 ## Brief Description
 
-targetSearch is an object that facilitates searching for products on Target's website and extracting structured data from the search results.
+targetSearch is an object that facilitates searching for products on Target's website and extracting relevant product information.
 
 ## Usage
 
-To use targetSearch, you need to make a POST request to the Target search API endpoint with the required parameters. The object handles URL construction, request formatting, and response parsing.
+To use targetSearch, you need to make a POST request to the Target search API endpoint with the required parameters.
 
 ## Parameters
 
-- `query` (string, required): The search term to look for on Target.
-- `offset` (number, optional): The number of results to skip, used for pagination.
-- `category` (string, optional): A 5-character alphanumeric category code to filter results.
-- `fulfillment` (string, optional): Filter by fulfillment method. Options are "Pickup", "Shop in Store", "Same Day Delivery", or "Shipping".
-- `sort_by` (string, optional): Sort order for results. Default is "Relevance". Other options include "Featured", "Price: Low to High", "Price: High to Low", "Average Ratings", "Best Seller", and "Newest".
+- `query` (string, required): The search term to look for on Target's website.
+- `offset` (number, optional): The number of results to skip before starting to return products.
+- `category` (string, optional): A specific category ID to limit the search results.
+- `fulfillment` (enum, optional): Filter results by fulfillment method. Options include "Pickup", "Shop in Store", "Same Day Delivery", and "Shipping".
+- `sort_by` (enum, optional): Sort the results. Options include "Relevance", "Featured", "Price: Low to High", "Price: High to Low", "Average Ratings", "Best Seller", and "Newest".
 
 ## Return Value
 
-The targetSearch object doesn't directly return a value, but it processes the API response to provide structured data about the search results, including product details like name, brand, price, rating, and image URLs.
+The API returns a JSON object containing search results, including product details such as name, brand, price, rating, and product identifiers.
 
 ## Examples
 
 ```javascript
 // Basic search for "iron flask"
-const response = await fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/search', {
+fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/search', {
   method: 'POST',
   headers: {
     'Authorization': 'Basic <YOUR_TOKEN>',
@@ -33,13 +33,12 @@ const response = await fetch('https://api.webit.live/api/v1/realtime/ecommerce/t
   body: JSON.stringify({
     query: 'iron flask'
   })
-});
+})
+.then(response => response.json())
+.then(data => console.log(data));
 
-const data = await response.json();
-console.log(data.parsing.search_results);
-
-// Search with additional parameters
-const advancedResponse = await fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/search', {
+// Search for "headphones" with sorting and fulfillment options
+fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/search', {
   method: 'POST',
   headers: {
     'Authorization': 'Basic <YOUR_TOKEN>',
@@ -47,18 +46,18 @@ const advancedResponse = await fetch('https://api.webit.live/api/v1/realtime/eco
   },
   body: JSON.stringify({
     query: 'headphones',
-    fulfillment: 'Shipping',
-    sort_by: 'Price: Low to High'
+    sort_by: 'Price: Low to High',
+    fulfillment: 'Shipping'
   })
-});
-
-const advancedData = await advancedResponse.json();
-console.log(advancedData.parsing.search_results);
+})
+.then(response => response.json())
+.then(data => console.log(data));
 ```
 
 ## Notes or Considerations
 
-- The API requires authentication. Make sure to replace `<YOUR_TOKEN>` with your actual API token.
-- The search results are paginated. Use the `offset` parameter to retrieve additional pages of results.
-- The actual data structure of the response may be more complex than shown in the examples. Refer to the full API documentation for detailed response format.
-- Be mindful of Target's terms of service and any rate limiting when using this API for frequent requests.
+- Ensure you have a valid API token for authentication.
+- The API uses web scraping techniques, so be mindful of Target's terms of service and rate limiting.
+- The search results may not always be exhaustive or real-time due to the nature of web scraping.
+- Some product information may be incomplete or missing depending on Target's website structure and data availability.
+- Consider implementing error handling and retries in your code to deal with potential API failures or timeouts.
