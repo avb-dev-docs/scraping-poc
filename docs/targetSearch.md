@@ -1,24 +1,24 @@
 # targetSearch Documentation
 
 ## Brief Description
-targetSearch is an object that facilitates searching for products on Target's website and extracting relevant product information.
+targetSearch is an object that facilitates product searches on Target's website, allowing users to extract data from Target search result pages.
 
 ## Usage
 To use targetSearch, you need to make a POST request to the Target search API endpoint with the required parameters.
 
 ## Parameters
 - `query` (string, required): The search term to look for on Target's website.
-- `offset` (number, optional): The number of results to skip before starting to return products.
-- `category` (string, optional): A specific category ID to filter results.
-- `fulfillment` (string, optional): Filter by fulfillment method (e.g., "Pickup", "Shop in Store", "Same Day Delivery", "Shipping").
-- `sort_by` (string, optional): Sorting criteria for results (e.g., "Relevance", "Price: Low to High", "Best Seller").
+- `offset` (number, optional): The number of results to skip before starting to return data.
+- `category` (string, optional): A 5-character alphanumeric code to filter results by category.
+- `fulfillment` (enum, optional): Filter results by fulfillment method. Options: "Pickup", "Shop in Store", "Same Day Delivery", "Shipping".
+- `sort_by` (enum, optional): Sort the results. Default is "Relevance". Other options include "Featured", "Price: Low to High", "Price: High to Low", "Average Ratings", "Best Seller", "Newest".
 
 ## Return Value
-The API returns a JSON object containing search results, including product details such as name, brand, price, rating, and image URLs.
+The API returns a JSON object containing search results, including product details such as name, brand, price, image URL, and more.
 
 ## Examples
 
-### Basic search
+### Basic Search
 ```javascript
 fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/search', {
   method: 'POST',
@@ -34,7 +34,7 @@ fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/search', {
 .then(data => console.log(data));
 ```
 
-### Search with additional parameters
+### Search with Sorting and Fulfillment Options
 ```javascript
 fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/search', {
   method: 'POST',
@@ -44,8 +44,8 @@ fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/search', {
   },
   body: JSON.stringify({
     query: 'headphones',
-    fulfillment: 'Pickup',
-    sort_by: 'Price: Low to High'
+    sort_by: 'Price: Low to High',
+    fulfillment: 'Shipping'
   })
 })
 .then(response => response.json())
@@ -53,8 +53,9 @@ fetch('https://api.webit.live/api/v1/realtime/ecommerce/target/search', {
 ```
 
 ## Notes or Considerations
-- Ensure you have a valid API token for authentication.
-- The API has rate limits and usage restrictions, so check the service documentation for details.
-- Search results may vary based on location and product availability.
-- Some parameters like `category` require specific format (e.g., 5-character string), so refer to Target's documentation for valid values.
-- The API uses a render flow to capture dynamic content, which may affect response times.
+- Ensure you have the correct authorization token before making requests.
+- The API uses a custom parsing system (parsit-ai) to extract data from Target's website.
+- Be mindful of Target's website terms of use when utilizing this API.
+- The search results may be paginated. Use the `offset` parameter for pagination if needed.
+- Some products may have sponsored listings, which will be indicated in the response.
+- The API simulates user interaction and page rendering, which may affect response times.
