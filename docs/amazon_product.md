@@ -1,21 +1,21 @@
 # amazon_product Documentation
 
 ## Brief Description
-amazon_product is an object that facilitates extracting product data from Amazon product pages using a given ASIN (Amazon Standard Identification Number).
+The `amazon_product` object is designed to extract data from an Amazon product page for a given ASIN (Amazon's Product ID).
 
 ## Usage
-To use amazon_product, you need to make a POST request to the specified endpoint with the required parameters.
+This object is used to construct a query for retrieving product information from Amazon. It's typically used as part of a larger API system.
 
 ## Parameters
-- `asin` (string, required): The 10-character ASIN of the Amazon product. Must match the pattern ^[A-Z0-9]{10}$.
+- `asin` (string, required): The Amazon Standard Identification Number (ASIN) of the product. Must be a 10-character string consisting of uppercase letters and numbers.
 
 ## Return Value
-The object returns a JSON response containing detailed product information extracted from the Amazon product page.
+The object doesn't return a value directly, but it's structured to be used in an API call that returns product information in JSON format.
 
 ## Examples
 
 ```javascript
-// Example POST request
+// Example API request using the amazon_product object
 fetch('https://api.webit.live/api/v1/realtime/ecommerce/amazon/product', {
   method: 'POST',
   headers: {
@@ -32,8 +32,8 @@ fetch('https://api.webit.live/api/v1/realtime/ecommerce/amazon/product', {
 ```
 
 ## Notes or Considerations
-- Ensure you have the necessary authorization token to access the API.
-- The ASIN must be a valid 10-character string containing only uppercase letters and numbers.
-- The response includes detailed product information such as price, availability, ratings, reviews, features, and variations.
-- The API supports multiple domains (e.g., "com", "co.uk") for different Amazon marketplaces.
-- Be mindful of Amazon's terms of service and usage policies when using this API.
+- The ASIN must be exactly 10 characters long and consist only of uppercase letters and numbers.
+- This object is designed to work with a specific API endpoint (https://api.webit.live/api/v1/realtime/ecommerce/amazon/product).
+- The API response includes detailed product information such as price, availability, ratings, reviews, product features, and variations.
+- Be aware of Amazon's terms of service regarding data scraping or API usage when implementing this in your projects.
+- The object includes support for different Amazon domains (e.g., .com, .co.uk), but the default is set to the US store.
