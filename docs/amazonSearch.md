@@ -1,90 +1,43 @@
 # amazonSearch Documentation
 
-## Overview
+## Brief Description
+amazonSearch is an object that facilitates searching for products on Amazon and extracting relevant data from the search results.
 
-The amazonSearch API endpoint is designed to extract data from Amazon search result pages for a given search keyword in real-time.
+## Usage
+To use amazonSearch, you need to make a POST request to the specified endpoint with the required parameters. The object handles the construction of the search URL and the parsing of the response.
 
-## Required Parameters
+## Parameters
+- `query` (string, required): The search term to look for on Amazon.
 
-| Parameter | Type   | Description                    |
-|-----------|--------|--------------------------------|
-| query     | string | The search keyword or phrase   |
+## Return Value
+The amazonSearch object doesn't directly return a value, but it processes the API response. The response includes:
+- URL of the search results page
+- Query used
+- Status of the request
+- Query time
+- Status code
+- Parsed search results, including details like ASIN, price, rating, product name, etc.
 
-## JSON Representation
-
-```json
-{
-  "query": "string"
-}
-```
-
-## Prerequisites
-
-| Prerequisite | Description |
-|--------------|-------------|
-| API Key      | A valid API key for authentication |
-| Account      | An active account with the API service |
-
-## Code Examples
-
-### Python
-
-```python
-import requests
-import json
-
-url = "https://api.webit.live/api/v1/realtime/ecommerce/amazon/search"
-headers = {
-    "Authorization": "Basic <YOUR_API_KEY>",
-    "Content-Type": "application/json"
-}
-data = {
-    "query": "ironflask"
-}
-
-response = requests.post(url, headers=headers, data=json.dumps(data))
-results = response.json()
-print(results)
-```
-
-### JavaScript
+## Examples
 
 ```javascript
-const axios = require('axios');
-
-const url = 'https://api.webit.live/api/v1/realtime/ecommerce/amazon/search';
-const headers = {
-    'Authorization': 'Basic <YOUR_API_KEY>',
+// Example POST request
+fetch('https://api.webit.live/api/v1/realtime/ecommerce/amazon/search', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Basic <TOKEN>',
     'Content-Type': 'application/json'
-};
-const data = {
+  },
+  body: JSON.stringify({
     query: 'ironflask'
-};
-
-axios.post(url, data, { headers })
-    .then(response => {
-        console.log(response.data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+  })
+})
+.then(response => response.json())
+.then(data => console.log(data));
 ```
 
-## Response Format
-
-The API returns a JSON object containing the search results. Each result includes details such as:
-
-- ASIN (Amazon Standard Identification Number)
-- Product name
-- Price
-- Rating
-- Number of reviews
-- Product URL
-- Image URL
-
-## Notes and Considerations
-
-- Ensure you have the necessary permissions and comply with Amazon's terms of service when using this API.
-- The API uses a parser with ID "6666fbe64acb2423809a0abb" for extracting data from the search results page.
-- The default country is set to "US", but the API supports both "com" and "co.uk" domains.
-- Rate limiting may apply, so consider implementing appropriate delays between requests for large-scale scraping.
+## Notes or Considerations
+- Ensure you have the necessary authorization token to make requests to the API.
+- The search is performed on Amazon.com by default, but other domains like Amazon.co.uk are supported.
+- The response includes detailed information about each product in the search results, which can be used for various e-commerce analytics or comparison purposes.
+- Be mindful of Amazon's terms of service when using this API for frequent or large-scale data extraction.
