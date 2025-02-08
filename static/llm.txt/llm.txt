@@ -1,0 +1,349 @@
+Below is all the contents of our docs: 
+
+
+
+ This is the content for the doc README.md 
+
+ # Welcome to your Dev-Docs Repo
+
+This Repo is the Starter Template and it was made by AVB
+
+```
+npm run start -- --host 0.0.0.0
+```
+
+
+
+
+ This is the content for the doc blog/2019-05-28-first-blog-post.md 
+
+ ---
+slug: first-blog-post
+title: First Blog Post
+authors:
+  name: Gao Wei
+  title: Docusaurus Core Team
+  url: https://github.com/wgao19
+  image_url: https://github.com/wgao19.png
+tags: [hola, docusaurus]
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+
+ This is the content for the doc blog/2019-05-29-long-blog-post.md 
+
+ ---
+slug: long-blog-post
+title: Long Blog Post
+authors: endi
+tags: [hello, docusaurus]
+---
+
+This is the summary of a very long blog post,
+
+Use a `<!--` `truncate` `-->` comment to limit blog post size in the list view.
+
+<!--truncate-->
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet
+
+
+ This is the content for the doc blog/2021-08-01-mdx-blog-post.mdx 
+
+ ---
+slug: mdx-blog-post
+title: MDX Blog Post
+authors: [slorber]
+tags: [docusaurus]
+---
+
+Blog posts support [Docusaurus Markdown features](https://docusaurus.io/docs/markdown-features), such as [MDX](https://mdxjs.com/).
+
+:::tip
+
+Use the power of React to create interactive blog posts.
+
+```js
+<button onClick={() => alert('button clicked!')}>Click me!</button>
+```
+
+<button onClick={() => alert('button clicked!')}>Click me!</button>
+
+:::
+
+
+ This is the content for the doc blog/2021-08-26-welcome/index.md 
+
+ ---
+slug: welcome
+title: Welcome
+authors: [slorber, yangshun]
+tags: [facebook, hello, docusaurus]
+---
+
+[Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).
+
+Simply add Markdown files (or folders) to the `blog` directory.
+
+Regular blog authors can be added to `authors.yml`.
+
+The blog post date can be extracted from filenames, such as:
+
+- `2019-05-30-welcome.md`
+- `2019-05-30-welcome/index.md`
+
+A blog post folder can be convenient to co-locate blog post images:
+
+![Docusaurus Plushie](./docusaurus-plushie-banner.jpeg)
+
+The blog supports tags as well!
+
+**And if you don't want a blog**: just delete this directory, and use `blog: false` in your Docusaurus config.
+
+
+ This is the content for the doc blog/New Blog.md 
+
+ import Editor from '@site/src/components/editor.jsx';
+    export const data = {"type":"doc","content":[{"type":"paragraph","attrs":{"textAlign":"left","customStyleString":""},"content":[{"type":"hardBreak"},{"type":"hardBreak"}]},{"type":"heading","attrs":{"textAlign":"left","level":1},"content":[{"type":"text","text":"Hey Kevin This is a blog!"}]},{"type":"paragraph","attrs":{"textAlign":"left","customStyleString":""}},{"type":"paragraph","attrs":{"textAlign":"left","customStyleString":""}}]}
+
+
+<Editor data={data} />
+
+
+<div style={{ display: 'none' }}>
+
+
+Hey Kevin This is a blog!
+
+
+</div>
+
+ This is the content for the doc blog/Welcome Blog Post.md 
+
+ import Editor from '@site/src/components/editor.jsx';
+    export const data = {"type":"doc","content":[{"type":"paragraph","content":[{"type":"hardBreak"},{"type":"hardBreak"}]},{"type":"heading","attrs":{"level":1},"content":[{"type":"text","text":"Intro to Dev-Docs"}]},{"type":"paragraph"},{"type":"heading","attrs":{"level":2},"content":[{"type":"text","text":"Description."}]},{"type":"paragraph"},{"type":"paragraph","content":[{"type":"text","text":"Welcome to the blog.  This is super cool, and I am mad excited to work on this!! Woot woot.  Lets go!"}]}]}
+
+
+<Editor data={data} />
+
+ This is the content for the doc blog/blogs/Yay Blogs.md 
+
+ import Editor from '@site/src/components/editor.jsx';
+    export const data = {"type":"doc","content":[{"type":"paragraph","content":[{"type":"hardBreak"},{"type":"hardBreak"}]},{"type":"heading","attrs":{"level":1},"content":[{"type":"text","text":"Lets goooo!"}]}]}
+
+
+<Editor data={data} />
+
+ This is the content for the doc blog/kdfnuidsbfhyhsd.md 
+
+ import Editor from '@site/src/components/editor.jsx';
+    export const data = {"type":"doc","content":[{"type":"paragraph","content":[{"type":"hardBreak"},{"type":"hardBreak"}]},{"type":"heading","attrs":{"level":1},"content":[{"type":"text","text":"Lets goooo!"}]}]}
+
+
+<Editor data={data} />
+
+ This is the content for the doc dev-docs/general.md 
+
+ Need a place for the fucntion to render headers of table rows, like value, description, requided.
+From the amount fo the array items will also get the length or number to set the number rows
+prop called categories which is an array
+
+ This is the content for the doc dev-docs/reference.md 
+
+ 
+
+ This is the content for the doc docs/Welcome to Dev-Docs.md 
+
+ ---
+slug: "/"
+title: "Welcome"
+---
+
+# Getting Started with the Dev-Docs Starter Template
+
+The Dev-Docs starter template is designed to help you create your own documentation quickly and easily. Whether you're building public-facing documentation for your APIs, SDKs, or applications, or internal documentation for your software engineering organization, this template provides a solid foundation to get started.
+
+## Setting Up the Template
+
+1. **Clone the repository**: Start by cloning the Dev-Docs starter template repository to your local machine.
+
+2. **Install dependencies**: Navigate to the project directory and install the required dependencies by running the appropriate command for your package manager (e.g., `npm install` or `yarn install`).
+
+3. **Customize the content**: The template comes with a basic structure and some sample content to help you get started. Modify the existing files or create new ones to suit your documentation needs.
+
+4. **Configure the theme**: The template uses a modern and responsive theme out of the box, but you can customize it further by modifying the styles and layout according to your project's branding and requirements.
+
+5. **Build and preview**: Use the provided build scripts to generate a static version of your documentation. Most static site generators also include a local development server, allowing you to preview your changes in real-time as you make them.
+
+6. **Deploy**: Once you're satisfied with your documentation, deploy it to your preferred hosting platform. Many static site generators provide seamless integration with popular hosting services like GitHub Pages, Netlify, or AWS S3.
+
+## Folder Structure
+
+The Dev-Docs starter template follows a standard folder structure to help you organize your content:
+
+- `docs/`: This directory contains the source files for your documentation, typically written in Markdown or another markup language supported by your chosen static site generator.
+- `public/`: This directory is used to store the generated, static HTML files after the build process.
+- `src/`: This directory contains the source code for any custom components, plugins, or scripts you might add to your documentation site.
+- `static/`: This directory is for static assets like images, stylesheets, and JavaScript files used by your documentation.
+
+## Customization and Extensibility
+
+The Dev-Docs starter template is built with extensibility in mind, allowing you to customize and enhance it according to your specific needs. You can:
+
+- **Add new pages**: Create new Markdown files in the `docs/` directory to add more pages to your documentation.
+- **Integrate with external services**: Leverage the extensibility of your chosen static site generator to integrate with external services like search engines, analytics tools, or comment systems.
+- **Develop custom components**: Use the `src/` directory to develop custom React components, Vue components, or other reusable elements to enhance the functionality and user experience of your documentation.
+- **Enhance the theme**: Modify the existing theme styles and layouts by editing the provided CSS and template files, or create your own custom theme from scratch.
+
+By leveraging the Dev-Docs starter template, you can kickstart your documentation project and focus on creating high-quality content while benefiting from the flexibility and extensibility of modern static site generators.
+
+
+
+
+ This is the content for the doc src/pages/_landing_page.md 
+
+ ````markdown 
+++{card style=" background: url('/img/dev-docs-assets/dev-docs-TW9uLCAxNyBKdWwgMjAyMyAwMzo0MTozNiBHTVQ=.png') no-repeat center center / cover;" class="background-landing"}++
+
+# ++{style="font-size: 120px;"} Dev-Docs
+
+## ++{style="text-align: center"} We are a documentation platform that helps developers generate, query, and search documentation using AI.
+
+[Get Started](https://dev-docs.io)++{style="" class="btn-grad"}
+[Read the Docs](/docs)++{style="" class="btn-grad"}
+
+
+--{card}--
+
+++{card type="grid"}++
+
+++{card style="" class="general-card"}++
+
+# Integrates with your Dev Tools
+
+
+Dev-Docs integrates with your existing development tools, so you can use it with the workflows and processes you already have in place.
+
+--{card}--
+
+++{card style="" class="general-card"}++
+
+# Write documentation for internal and public APIs.
+
+Dev-Docs allows helps internal teams create Docs for onboarding engineers as well as public API/SDK docs for other developers.
+
+
+
+
+--{card}--
+
+++{card style="" class="general-card"}++
+
+# Markdown First
+
+Anything created using Dev-Docs outputs markdowns, so regardless of whether you are using the UI or direct markdown via Code you are covered.
+
+--{card}--
+
+--{card}--
+
+
+
+# ++{style="font-size: 60px; text-align: center"} How it works
+
+++{card style="" class="magic-card extend-width-full-page"}++
+
+
+++{card style="" class=""}++
+# ++{style="font-size: 40px;"} Internal Docs
+
+## Make it easy for your team to document your codebases
+
+![](/img/dev-docs-assets/dev-docs-VHVlLCAxOCBKdWwgMjAyMyAxMzo1MDoxNiBHTVQ=.png)
+
+--{card}--
+
+++{card style="margin-top: 10em;" class=""}++
+
+# ++{style="font-size: 40px; height: 40px; padding-top: 10em;;"} External Docs
+
+## Create supercharged documentation sites with Dev-Docs
+
+![](/img/dev-docs-assets/dev-docs-VHVlLCAxOCBKdWwgMjAyMyAxNzoyNDoyNyBHTVQ=.png)
+
+--{card}--
+
+--{card}--
+
+
+++{card style="" class="draggable-logo-grid"}++
+
+## ++{style="font-size: 40px;"} Integrates with the tools you love
+
+![](/img/dev-docs-assets/dev-docs-VHVlLCAxOCBKdWwgMjAyMyAxODo0NDoyOCBHTVQ=.png)
+![](/img/dev-docs-assets/dev-docs-VHVlLCAxOCBKdWwgMjAyMyAyMDozMjoyMCBHTVQ=.png)
+![](/img/dev-docs-assets/dev-docs-VHVlLCAxOCBKdWwgMjAyMyAxODo0NTozMSBHTVQ=.png)
+![](https://logo.clearbit.com/atlassian.com)
+![](https://logo.clearbit.com/openai.com)
+![](/img/dev-docs-assets/dev-docs-VHVlLCAxOCBKdWwgMjAyMyAyMDoyMToyOSBHTVQ=.png)
+![](/img/dev-docs-assets/dev-docs-VHVlLCAxOCBKdWwgMjAyMyAyMDoyMjo1MCBHTVQ=.png)
+
+--{card}--
+
+
+++{card type="grid"}++
+
+++{card style="" class="cta general-card"}++
+# Ready to get started?
+
+## Create an Account with Dev-Docs and start documenting today
+
+[Get Started](https://google.com)++{style="" class="btn-grad"}
+
+--{card}--
+
+++{card style="" class="cta general-card"}++
+# Want a demo?
+
+## Book time using the calendly link to get a demo from one of our founding team members.
+
+[Book a Demo](https://google.com)++{style="" class="btn-grad"}
+
+--{card}--
+
+--{card}--
+
+
+ ````
+ <Parser />
