@@ -1,45 +1,36 @@
 # amazon_product Documentation
 
 ## Brief Description
-`amazon_product` is an object that facilitates data extraction from Amazon product pages using a given ASIN (Amazon's Product ID).
+The `amazon_product` object is a JSON configuration for extracting data from an Amazon product page given an ASIN (Amazon Standard Identification Number).
 
 ## Usage
-To use `amazon_product`, you need to make a POST request to the specified endpoint with the required parameters. This object is designed to be used within an API environment.
+This object is typically used as part of a larger API or system for scraping Amazon product data. It defines the structure and parameters needed to make a request to retrieve product information.
 
 ## Parameters
-- `asin` (string, required): The Amazon Standard Identification Number (ASIN) of the product. Must be a 10-character alphanumeric string.
+- `asin` (string, required): The Amazon Standard Identification Number of the product. Must be a 10-character alphanumeric string.
 
 ## Return Value
-The `amazon_product` object returns a JSON response containing detailed information about the specified Amazon product, including:
-- Product details (name, ASIN, parent ASIN, availability)
-- Pricing information
-- Ratings and reviews
-- Product features and specifications
-- Image URLs
-- Available variations (size, color, etc.)
+When used in an API request, this configuration returns a JSON object containing detailed product information from the Amazon page.
 
 ## Examples
 
-```javascript
-// Example POST request
-fetch('https://api.webit.live/api/v1/realtime/ecommerce/amazon/product', {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Basic <TOKEN>',
-    'Content-Type': 'application/json'
+```json
+{
+  "endpoint": "https://api.webit.live/api/v1/realtime/ecommerce/amazon/product",
+  "method": "POST",
+  "headers": {
+    "Authorization": "Basic <TOKEN>",
+    "Content-Type": "application/json"
   },
-  body: JSON.stringify({
-    asin: 'B0C4ZZBD71'
-  })
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
+  "body": {
+    "asin": "B0C4ZZBD71"
+  }
+}
 ```
 
 ## Notes or Considerations
-- Ensure you have the necessary API access and authentication token before making requests.
-- The ASIN must be valid and correspond to an existing Amazon product.
-- The data returned may vary depending on the product and its availability.
-- Respect Amazon's terms of service and rate limits when using this API.
-- The response includes detailed product information, which may be useful for various e-commerce applications, price tracking, or product analysis.
+- This object is designed to work with a specific API endpoint (https://api.webit.live/api/v1/realtime/ecommerce/amazon/product).
+- The API requires authentication via a token in the Authorization header.
+- The object includes configurations for different Amazon domains (.com, .co.uk), defaulting to the US store.
+- The returned data includes comprehensive product details such as price, rating, reviews, features, and variations.
+- Ensure you comply with Amazon's terms of service and robots.txt when using this for web scraping.
